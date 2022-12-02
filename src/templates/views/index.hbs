@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="/css/style.css">
+
+    </head>
+    <body>
+        <div class="principal">
+            {{>header}}
+            
+            <div class="login-div">
+                <h2>Digite aqui os dados de login</h2>
+                <form id='login' action="post">
+                    <input class="login" placeholder="email" id="input_l_email" required> <br>
+                    <input class="login" placeholder="senha" id="input_l_senha" type="password" required> <br>
+                    <button class="login"><strong>Entrar</strong></button>
+                </form>
+            </div>
+
+            <div class="cadastro-div">
+                <h2> Ou faça aqui seu cadastro</h2>
+                <form id="cadastro" action="post">
+                    <input class="cadastro" placeholder="nome" id="input_nome" required> <br>
+                    <input class="cadastro" placeholder="email" id="input_c_email" required> <br>
+                    <input class="cadastro" placeholder="senha" id="input_c_senha" type="password" required> <br>
+                    <input class="cadastro" placeholder="idade" id="input_idade" required> <br>
+                    <button class="cadastro"><strong>Criar conta</strong></button>
+                </form>
+            </div>
+            {{>footer}}
+        </div>
+
+        <script src="/js/login_req.js"></script>
+        <script src="/js/cadastro_req.js"></script>
+    </body>
+</html>

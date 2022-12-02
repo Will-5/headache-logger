@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Help page</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <div class="main-content">
+            {{>header}}
+            <p>
+                <strong>Cadastro/Login:</strong> insira os todos os dados corretamente e envie o formulário.
+            </p>
+            <p>
+                <strong>Cadastro de dor:</strong>
+                <ul>
+                <li><p>Insira os dados corretamente e envie o formulário.</p></li>
+                <li><p>Descrição possui um limite de 10 caracteres</p></li>
+                <li><p>Duração possui um limite de 20.</p></li>
+                <li><p>A data precisa obrigatoriamente estar no formato YYYY-MM-DD.</p></li>
+                <li><p>A intensidade precisa obrigatoriamente ter um valor de 1 a 10.</p></li>
+                <li><p>Só é possível selecionar 1 gatilho da lista.</p></li>
+                <li><p>Cada remédio tem um limite de 25 caracteres.</p></li>
+                <li><p>Inserção de dados de remédio utilizado e se o remédio funcionou não são obrigatórias, 
+                entretanto a informação de se remédio funcionou possui valor default de “Não” (falso).</p></li>
+                </ul>
+            </p>
+        </div>
+        
+        {{>footer}}
+    </body>
+</html>

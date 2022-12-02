@@ -1,0 +1,98 @@
+body {
+    color:antiquewhite;
+    background-color:#182030 ;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 0 16px;
+    
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+p {
+    font-size: 24px;
+}
+hr{
+    color: #9393dc;
+}
+.principal {
+    flex-grow: 1;
+}
+footer {
+    border-top: 3px solid #9393dc;
+    padding: 16px;
+}
+header {
+    margin-top: 16px;
+    margin-bottom: 48px;
+    border-bottom: 3px solid #9393dc;
+}
+.login {
+    margin: 8px;
+    font-size: 16px;
+    padding: 8px;
+}
+.cadastro {
+    margin: 8px;
+    font-size: 16px;
+    background-color: antiquewhite;
+}
+.apagar {
+    font-size: 16px;
+    border: 3px solid red;
+    background-color: antiquewhite;
+}
+
+h1 {
+    color:#9393dc;
+    font-size: 64px;
+}
+h2 {
+    color:antiquewhite;
+    font-size: 48px;
+}
+h3 {
+    color: antiquewhite;
+    font-size: 32px;
+}
+header a {
+    border: 3px solid #9393dc;
+    border-radius: 5%;
+    border-style: inset outset;
+    padding: 6px;
+    color:antiquewhite;
+    margin-right: 16px;
+    font-size: 32px;
+    text-decoration: none
+}
+.portrait {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+input {
+    border: 1px solid #9393dc;
+    padding: 8px;
+    background: antiquewhite;
+}
+::-webkit-input-placeholder{
+    font-size: 24px;
+}
+button {
+    cursor: pointer;
+    border: 2px solid #9393dc;
+    background: antiquewhite;
+    padding: 8px;
+}
+footer a {
+    border: 3px solid #9393dc;
+    border-radius: 5%;
+    border-style: inset outset;
+    padding: 6px;
+    color:antiquewhite;
+    margin-right: 16px;
+    font-size: 32px;
+    text-decoration: none
+}

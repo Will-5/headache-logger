@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Meu perfil</title>
+        <link rel="stylesheet" href="/css/style.css">
+
+    </head>
+    <body>
+        <div class="principal">
+            {{>header}}
+
+            <h2>Meu perfil</h2>
+            <div>
+
+                    <h3>Gatilho mais comum</h3>
+                    <p id="gatilho_comum">Nenhum</p>
+
+            </div>
+
+            <hr>
+            
+            <div>
+
+                    <h3>Frequencia de ocorrências neste mês</h3>
+                    <p id="freq_mes">Nenhum</p>
+
+            </div>
+
+            <hr>
+
+            <div>
+                <h3>Pior ocorrência registrada</h2>
+
+                    <p>Descrição: <span id="pior_dor_desc">-</span> </p>
+                    <p>Início: <span id="pior_dor_inicio">-</span> </p>
+                    <p>Duração: <span id="pior_dor_duracao">-</span> </p>
+                    <p>Remédio: <span id="pior_dor_remedio">-</span> </p>
+                    <p>Remédio funcionou? <span id="pior_dor_remedio_funcionou">-</span> </p>
+                    <p>Gatilho: <span id="pior_dor_gatilho">-</span> </p>
+                    <p>Intensidade: <span id="pior_dor_intensidade">-</span> </p>
+
+            </div>
+
+            <hr>
+
+            <div id="outras_dores">
+                <h3>Outras dores de cabeça</h3>
+                    <ul>
+                        
+                    </ul>
+
+            </div>
+            {{>footer}}
+        </div>
+        <script src="/js/myarea_req.js"></script>
+    </body>
+</html>

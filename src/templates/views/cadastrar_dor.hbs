@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cadastro dor de cabeça</title>
+        <link rel="stylesheet" href="/css/style.css">
+
+    </head>
+    <body>
+        <div class="principal">
+            {{>header}}
+
+            <h2>Cadastre sua dor de cabeça</h2>
+            <div id="dor-div">
+                <form action="post" id="registro_dor">
+                    <input class="cadastro" placeholder="descrição" id="input_desc" required> <br>
+                    <input class="cadastro" placeholder="duração" id="input_duracao" required> <br>
+                    <p>digite data no formato yyyy-mm-dd</p>
+                    <input class="cadastro" placeholder="data de início" id="input_inicio" required> <br>
+                    <p>digite intensidade entre 1 e 10</p>
+                    <input class="cadastro" placeholder="intensidade" id="input_intensidade"  required> <br>
+                    <div class="gatilhos">
+                        <p>Gatilhos</p>
+                        <input name="radio_input" type="radio" class="cadastro gatilho" id="gatilho1" value="Álcool"> 
+                        <label for="gatilho1">Álcool</label> <br>
+                        
+                        <input name="radio_input" type="radio" class="cadastro gatilho" id="gatilho2" value="Estresse e ansiedade">
+                        <label for="gatilho2">Estresse e ansiedade</label> <br>
+                        
+                        <input name="radio_input" type="radio" class="cadastro gatilho" id="gatilho3" value="Estímulos sensoriais"> 
+                        <label for="gatilho3">Estímulos sensoriais</label> <br>
+
+                        <input name="radio_input" type="radio" class="cadastro gatilho" id="gatilho4" value="Bruxismo">
+                        <label for="gatilho4">Bruxismo</label> <br>
+                        
+                        <input name="radio_input" type="radio" class="cadastro gatilho" id="gatilho5" value="Dormir mal">
+                        <label for="gatilho5">Dormir mal</label> <br>
+                        
+                        <input name="radio_input" type="radio" class="cadastro gatilho" id="gatilho6" value="Má postura"> 
+                        <label for="gatilho6">Má postura</label> <br>
+                        
+                        <input name="radio_input" type="radio" class="cadastro gatilho" id="gatilho7" value="Alimentação"> 
+                        <label for="gatilho7">Alimentação</label> <br>
+                    </div> <br>
+
+                    <div class="remedios">
+                        <p>Remédios</p>
+                        <input placeholder="remédio 1" class="cadastro remedio" id="remedio1"> 
+                        <br>
+                        
+                        <input placeholder="remédio 2" class="cadastro remedio" id="remedio2">
+                        <br>
+                        
+                        <input placeholder="remédio 3" class="cadastro remedio" id="remedio3"> 
+                        <br>
+                    </div> <br>
+                    <p>
+                        Remédio funcionou ?
+                        <input type="checkbox" class="cadastro" id="input_funcionou"> 
+                    </p>
+
+                    <button class="cadastro"><strong>Cadastrar dor de cabeça</strong></button>
+                </form>
+            </div>
+
+            {{>footer}}
+        </div>
+
+        <script src="/js/registro_dor_req.js"></script>
+    </body>
+</html>
