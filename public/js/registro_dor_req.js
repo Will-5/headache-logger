@@ -1,3 +1,10 @@
+// let c = document.cookie.Token;
+// console.log(c)
+// if (!c) {
+//     alert("Realize login")
+//     window.location.href = "/"
+// }
+
 const registro_dor = document.getElementById("registro_dor")
 const getRadioInput = () => {
     var t = document.getElementsByName("radio_input")

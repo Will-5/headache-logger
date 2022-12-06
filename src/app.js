@@ -6,6 +6,7 @@ const userRouter = require('./routers/user')
 const headacheRouter = require('./routers/headache')
 const triggerRouter = require('./routers/trigger')
 const remedyRouter = require('./routers/remedy')
+const cookieParser = require('cookie-parser')
 
 
 const app = express()
@@ -17,8 +18,9 @@ const viewsPath = path.join(__dirname, '/templates/views')
 const partialsPath = path.join(path.join(__dirname, '/templates/partials'))
 
 // setup handlebars engine and views location
-app.set('view engine','hbs')
+app.set('view engine', 'hbs')
 app.set('views', viewsPath)
+app.use(cookieParser());
 hbs.registerPartials(partialsPath)
 
 // setup static directory to serve
@@ -41,7 +43,7 @@ app.get('/', (req, res) => {
 })
 
 // cadastrar dor de cabeça
-app.get('/cadastrar_dor', (req, res) =>{
+app.get('/cadastrar_dor', (req, res) => {
     res.render('cadastrar_dor'), {
         title: 'Headache-logger',
         name: 'William'
@@ -71,7 +73,7 @@ app.get('/ajuda/*', (req, res) => {
     })
 })
 
-app.get('*',(req, res) => {
+app.get('*', (req, res) => {
     res.render('404', {
         title: '404',
         error: 'Error 404 - page not found',

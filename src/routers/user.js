@@ -3,36 +3,50 @@ const router = new express.Router()
 const auth = require('../middleware/auth')
 const User = require('../models/user')
 
-
 //sign up user
 router.post('/users', async (req, res) => {
     const user = new User(req.body)
-    try{
+    try {
+
         await user.save()
         const token = await user.generateAuthToken()
-        res.status(201).send({user: user, token: token})
-    } catch(e) {
+
+        res.status(201).send({ user: user, token: token })
+
+    } catch (e) {
+
         res.status(400).send(e)
     }
 })
 
 // login user
 router.post('/users/login', async (req, res) => {
+
     try {
+
         const user = await User.findByCredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken()
-        res.send({ user, token })
-    } catch(e) {
-        res.status(400).send()
+
+        res.cookie("Token", token, { maxAge: 5000000 })
+
+        //res.window.location.href = '/meuperfil'
+
+        res.status(200).send(user)
+
+    } catch (e) {
+        console.log(e)
+        res.status(400).json(e)
     }
 })
 
 // logout user (single session)
-router.post('/users/logout', auth, async (req,res) => {
+router.post('/users/logout', auth, async (req, res) => {
     try {
+
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token
         })
+
         await req.user.save()
 
         res.send()
@@ -63,14 +77,14 @@ router.get('/users/me', auth, async (req, res) => {
 //update user
 router.patch('/users/me', auth, async (req, res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['name','email','password', 'age']
+    const allowedUpdates = ['name', 'email', 'password', 'age']
     const isValidOp = updates.every((update) => allowedUpdates.includes(update))
 
-    if (!isValidOp){
-        return res.status(400).send({error: 'Invalid operation'})
+    if (!isValidOp) {
+        return res.status(400).send({ error: 'Invalid operation' })
     }
 
-    try{
+    try {
         const user = req.user
 
         updates.forEach((update) => {
@@ -79,17 +93,17 @@ router.patch('/users/me', auth, async (req, res) => {
 
         await user.save()
         res.send(user)
-    } catch(e){
+    } catch (e) {
         res.status(400).send(e)
     }
 })
 
 //delete user
 router.delete('/users/me', auth, async (req, res) => {
-    try{
+    try {
         await req.user.remove()
         res.send(req.user)
-    }catch(e){
+    } catch (e) {
         res.status(500).send()
     }
 })

@@ -23,8 +23,7 @@ login.addEventListener('submit',(e) => {
             alert("Erro no login");
         } else {
             console.log(data)
-            sessionStorage.setItem('logged',1)
-            //window.location.href = "/meuperfil"
+            window.location.href = "/meuperfil"
         }
         })
         .catch((err) => {

@@ -3,11 +3,18 @@ const Headache = require('../models/headache')
 const router = new express.Router()
 const auth = require('../middleware/auth')
 
-router.post('/headaches', async (req, res) => {
+router.post('/headaches',auth ,async (req, res) => {
+    
+    const token = req.cookies?.Token
+    const payLoad = token.split('.')[1]
+    const decodedPayLoad = atob(payLoad)
+    const userData = JSON.parse(decodedPayLoad)
+
+
     // operador ... é o de spread - ele traz todo o objeto da request
     const headache = new Headache({
         ...req.body,
-        //owner: req.user._id
+        owner: userData._id
     })
     console.log(req.body)
 
@@ -24,9 +31,14 @@ router.post('/headaches', async (req, res) => {
 //filtro -> /headache?complete=true
 //paginação -> /headache?limit=10&skip=0
 //ordenação -> /headache?sortBy=createdAt_desc  ou asc
-router.get('/headaches', async (req, res) => {
+router.get('/headaches',auth ,async (req, res) => {
+    const token = req.cookies?.Token
+    const payLoad = token.split('.')[1]
+    const decodedPayLoad = atob(payLoad)
+    const userData = JSON.parse(decodedPayLoad)
+    
     try{
-        Headache.find({}).sort({name: 1}).then((headache) => {
+        Headache.find({ owner: userData._id }).sort({name: 1}).then((headache) => {
             res.status(201).send(headache)
         }).catch((e) => {
             res.status(500).send()

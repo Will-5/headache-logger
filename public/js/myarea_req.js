@@ -1,3 +1,10 @@
+// let c = document.cookie.Token;
+// console.log(c)
+// if (!c) {
+//     alert("Realize login")
+//     window.location.href = "/"
+// }
+
 const booleanToSimOuNao = (bool) => {
     if (bool)
         return "Sim"
