@@ -70,6 +70,7 @@ userSchema.methods.toJSON = function () {
     return userObject
 }
 
+//hera token de autenticação
 userSchema.methods.generateAuthToken = async function () {
     const user = this
     const token = jwt.sign({_id: user._id.toString()}, 'rabanete', {expiresIn: '7 days' })
@@ -80,6 +81,7 @@ userSchema.methods.generateAuthToken = async function () {
     return token
 }
 
+//encontra usuário para logar
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({email: email})
 
@@ -95,7 +97,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
     return user
 }
 
-// hash plaintext password before saving
+// hash a string de SENHA ANTES DE SALVAR
 userSchema.pre('save', async function (next){
     const user = this
     

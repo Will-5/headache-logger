@@ -43,7 +43,7 @@ const headacheSchema = new mongoose.Schema({
         type: Date,
         required: true,
         trim: true,
-        max: new Date().toISOString('pt-BR')
+        max: new Date()
     },
     
     owner: {

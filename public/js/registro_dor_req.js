@@ -29,7 +29,8 @@ registro_dor.addEventListener("submit",(e) => {
 
     const desc = document.getElementById("input_desc").value
     const duracao = document.getElementById("input_duracao").value
-    const inicio = new Date(document.getElementById("input_inicio").value).toISOString('pt-BR')
+    const inicio = new Date(document.getElementById("input_inicio").value)
+    inicio.setHours(inicio.getHours()+3)
     const intensidade = document.getElementById("input_intensidade").value
     const remedioFuncionou = document.getElementById("input_funcionou").checked
     const gatilho = getRadioInput()
