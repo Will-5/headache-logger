@@ -29,8 +29,6 @@ router.post('/users/login', async (req, res) => {
 
         res.cookie("Token", token, { maxAge: 5000000 })
 
-        //res.window.location.href = '/meuperfil'
-
         res.status(200).send(user)
 
     } catch (e) {

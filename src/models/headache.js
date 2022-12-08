@@ -21,7 +21,6 @@ const headacheSchema = new mongoose.Schema({
         type: String,
         default: "nenhum",
         trim: true,
-        ref: "Remedy",
         maxLength: 25
     }],
     trigger: {
@@ -35,7 +34,7 @@ const headacheSchema = new mongoose.Schema({
         required: true,
         trim: true,
         validate(value){
-            if(value < 0 || value > 10) {
+            if(value < 1 || value > 10) {
                 throw new Error('Intensidade precisa estar entre 1 e 10')
             }
         }
@@ -43,7 +42,8 @@ const headacheSchema = new mongoose.Schema({
     headacheStartDate: {
         type: Date,
         required: true,
-        trim: true
+        trim: true,
+        max: new Date().toISOString('pt-BR')
     },
     
     owner: {

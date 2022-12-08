@@ -18,8 +18,7 @@ login.addEventListener('submit',(e) => {
             "password": l_senha
         })
     }).then((res) => res.json()).then((data) => {
-        console.log(data);
-        if (data.error) {
+        if (data.error || Object.keys(data).length === 0) {
             alert("Erro no login");
         } else {
             console.log(data)

@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         default: 0,
         validate (value) {
             if (value < 0){
-                throw new Error('AGE must be a positive number')
+                throw new Error('idade precisa ser positiva')
             }
         }
     },
@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
 
         validate (value) {
             if (!validator.isEmail(value)) {
-                throw new Error('Email not valid')
+                throw new Error('Email inválido')
             }
         }
     },
@@ -35,10 +35,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        minLength: [6, 'password too short'],
+        minLength: [6, 'senha muito curta'],
         validate (value) {
-            if(value.toLowerCase().includes("password")){
-                throw new Error('Password must not contain the word "password"')
+            if(value.toLowerCase().includes("senha")){
+                throw new Error('Senha não pode conter palavra "senha"')
             }
         }
     },
@@ -84,13 +84,13 @@ userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({email: email})
 
     if (!user){
-        throw new Error('Unable to login')
+        throw new Error('Não foi possível logar')
     }
 
     const isMatch = await bcrypt.compare(password, user.password)
 
     if(!isMatch){
-        throw new Error('Unable to login')
+        throw new Error('Não foi possível logar')
     }
     return user
 }

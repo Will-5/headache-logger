@@ -7,7 +7,6 @@ const auth = async (req, res, next) => {
 
 
     try {
-
         const token = tokenReq
         const decoded = jwt.verify(token, 'rabanete')
         const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
@@ -21,8 +20,7 @@ const auth = async (req, res, next) => {
         next()
 
     } catch {
-
-        res.status(401).send({ error: 'please authenticate' })
+        res.status(401).send({ errors: 'Você não está logado. Por favor realize o login' })
     }
 }
 

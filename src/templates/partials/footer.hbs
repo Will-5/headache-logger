@@ -1,8 +1,15 @@
 <footer>
     <br>
     <a href="/ajuda">Ajuda</a>
+    <button class="logout" onclick="logout()">Logout</button>
     
     <h4>TCC - Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas - UTP</h4><br>
 
+    <script>
+        const logout = () => {
+            document.cookie = "Token"+'=; Max-Age=-99999999;';
+            window.location.reload()
+        }
+    </script>
     
 </footer>

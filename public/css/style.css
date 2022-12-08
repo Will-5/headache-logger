@@ -40,8 +40,20 @@ header {
 }
 .apagar {
     font-size: 16px;
-    border: 3px solid red;
+    border: 3px solid crimson;
     background-color: antiquewhite;
+}
+
+.logout {
+    border: 3px solid crimson;
+    border-radius: 5%;
+    border-style: inset outset;
+    padding: 6px;
+    color:antiquewhite;
+    background-color: #182030;
+    margin-right: 16px;
+    font-size: 32px;
+    text-decoration: none
 }
 
 h1 {

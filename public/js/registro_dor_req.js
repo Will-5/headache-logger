@@ -14,6 +14,7 @@ const getRadioInput = () => {
         }
     }
 }
+
 const getRemedios =() =>{
     var r = document.querySelectorAll(".cadastro.remedio")
     let arr = []
@@ -28,48 +29,43 @@ registro_dor.addEventListener("submit",(e) => {
 
     const desc = document.getElementById("input_desc").value
     const duracao = document.getElementById("input_duracao").value
-    const inicio = document.getElementById("input_inicio").value
+    const inicio = new Date(document.getElementById("input_inicio").value).toISOString('pt-BR')
     const intensidade = document.getElementById("input_intensidade").value
     const remedioFuncionou = document.getElementById("input_funcionou").checked
     const gatilho = getRadioInput()
     const remedios = getRemedios()
     const url = '/headaches'
 
-    if(!inicio.includes('-')
-        && !Date.parse(inicio)
-        && inicio.slice(4,5) != '-'
-        && inicio.slice(7,8) != '-'
-        && inicio.slice(5,7) > 12
-        && inicio.slice(8,10) > 31
-    ){
-        alert("digite a data no formato correto")
-    } else{
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                Accept: "application/json, text/plain, */*",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                "description": desc,
-                "duration": duracao,
-                "headacheStartDate": Date.parse(inicio),
-                "intensity": intensidade,
-                "trigger": gatilho,
-                "remedy": remedios,
-                "remedyWorked": remedioFuncionou
-            })
-        }).then((res) => res.json()).then((data) => {
-            if (data.errors) {
-                console.log(data)
+    console.log(inicio)
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            "description": desc,
+            "duration": duracao,
+            "headacheStartDate": Date.parse(inicio),
+            "intensity": intensidade,
+            "trigger": gatilho,
+            "remedy": remedios,
+            "remedyWorked": remedioFuncionou
+        })
+    }).then((res) => res.json()).then((data) => {
+        if (data.errors) {
+            console.log(data)
+            if (data.message)
                 alert(data.message)
-            } else {
-                console.log(data)
-                alert("Cadastro de  dor de cabeça foi um sucesso")
-            }
-            }).catch((err) => {
-                console.log(err);
-            })
-    }
+            else
+                alert(data.errors)
+        } else {
+            console.log(data)
+            alert("Cadastro de dor de cabeça foi um sucesso")
+        }
+        }).catch((err) => {
+            console.log(err);
+        })
 })    
 

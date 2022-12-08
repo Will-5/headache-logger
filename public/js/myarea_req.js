@@ -115,7 +115,10 @@ fetch("/headaches", {
 }).then((res) => res.json()).then((data) => {
     if (data.errors) {
         console.log(data)
-        alert(data.message)
+        if (data.message)
+            alert(data.message)
+        else
+            alert(data.errors)
     } else {
         console.log(data)
         mostCommonTriggerWriter(data)
