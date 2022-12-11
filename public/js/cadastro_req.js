@@ -24,11 +24,12 @@ cadastro.addEventListener('submit',(e) => {
     }).then((res) => res.json()).then((data) => {
         if (data.errors) {
             console.log(data.errors.message)
-            alert("Erro no cadastro");
-        } else {
+            alert("Erro no cadastro")
+        } else if (data.user) {
             console.log(data)
             alert("cadastro com sucesso")
-        }
+        } else
+            alert("Erro no cadastro")
         })
         .catch((err) => {
         console.log(err);

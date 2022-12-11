@@ -43,7 +43,7 @@ const headacheSchema = new mongoose.Schema({
         type: Date,
         required: true,
         trim: true,
-        max: new Date()
+        max: [new Date(), "ERRO no cadastro de dor de cabeça. Não selecione data futura"]
     },
     
     owner: {
