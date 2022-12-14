@@ -17,6 +17,7 @@ router.post('/headaches',auth ,async (req, res) => {
         owner: userData._id
     })
     console.log(req.body)
+    console.log(new Date(new Date().setHours(new Date().getHours() + 3)))
 
     try {
         await headache.save()
